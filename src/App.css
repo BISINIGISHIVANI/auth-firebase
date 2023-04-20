@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+.App {
+  font-family: "Comfortaa", cursive;
+  text-align: center;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --primary-color: #4b6cb7;
+  --gray: #f2f2f2;
+  --mainBlack: #0b0b0b;
+  --mainWhite: #ffffff;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.gap {
+  gap: 1rem;
+}
+.place-items {
+  place-items: center center;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.margin-sm{
+  margin-top: 8px;
+}
+a{
+  text-decoration: none;
+  color: var(--primary-color);
+}
