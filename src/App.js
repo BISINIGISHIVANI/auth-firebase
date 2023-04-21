@@ -2,9 +2,13 @@ import './App.css';
 import {Routes,Route} from "react-router-dom"
 import {Login,Signup,ResetPassword,MyDashboard} from "./components/index"
 import { ErrorPage } from './pages/errorPage/errorPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <div>
+
     <Routes>
       <Route path="/"element={<Login/>}/>
       <Route path="/signup"element={<Signup/>}/>
@@ -12,7 +16,7 @@ function App() {
       <Route path="/mydashboard"element={<MyDashboard/>}/>
       <Route path="*"element={<ErrorPage/>}/>
     </Routes>
-    {/* <ToastContainer
+    <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={true}
@@ -22,7 +26,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      /> */}
+      />
     </div>
   );
 }

@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
   registerWithEmailAndPassword,
-  signInWithGoogle,
 } from "../firebase";
 import { loginImg } from "../assets";
+import {toast} from "react-toastify"
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const register = () => {
-    if (!name) alert("Please enter name");
+    if (!name) toast.warn("Please enter name");
     registerWithEmailAndPassword(name, email, password);
   };
 
@@ -76,10 +76,7 @@ const Signup = () => {
               </div>
               <button className="border-none primary-btn" onClick={register}>
                 Sign up
-                {/* {isLoading ? <i className="fa fa-spinner"></i> : ""} */}
-              </button>
-              <button className="secondary-btn" onClick={signInWithGoogle}>
-                Signup with google
+                {loading ? <i className="fa fa-spinner"></i> : ""}
               </button>
             </div>
             <p className="padding-sm decoration-none">

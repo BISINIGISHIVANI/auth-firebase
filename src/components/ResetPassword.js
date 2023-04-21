@@ -38,7 +38,7 @@ const ResetPassword = () => {
             
               <button className="border-none primary-btn"onClick={() => sendPasswordReset(email)}>
               Send password reset email
-                {/* {isLoading ? <i className="fa fa-spinner"></i> : ""} */}
+                {loading ? <i className="fa fa-spinner"></i> : ""}
               </button>
               <Link to="/">
               <button className="border-none primary-btn" >

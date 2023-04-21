@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import {toast} from "react-toastify"
 const MyDashboard = () => {
   const [user, loading] = useAuthState(auth);
   const [name, setName] = useState("");
@@ -17,25 +18,29 @@ const MyDashboard = () => {
       setName(data.name);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      toast.error("An error occured while fetching user data");
     }
   };
 
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/");
-
     fetchUserName();
   });
   return (
-    <div>MyDashboard
-      <div className="dashboard__container">
-        Logged in as
-        <div>Hi,{name}</div>
-        <div>{user?.email}</div>
-        <button className="dashboard__btn" onClick={logout}>
+    <div>
+      <header className="dashboard-title">
+        <h1>MyDashboard</h1>
+      </header>
+      <div className="dashboard card">
+        <i className="fa fa-user"></i>
+        <div>
+          <h2>Hi,{name}</h2>
+        <h2>{user?.email}</h2>
+        <button className="btn"onClick={logout}>
           Logout
         </button>
+        </div>
       </div>
     </div>
   )

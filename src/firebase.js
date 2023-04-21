@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {
-  GoogleAuthProvider,
   getAuth,
-  signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -10,13 +8,10 @@ import {
 } from "firebase/auth";
 import {
   getFirestore,
-  query,
-  getDocs,
   collection,
-  where,
   addDoc,
 } from "firebase/firestore";
-
+import {toast} from "react-toastify"
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyBwcsFs2c3DIYwZXAaj90g8-9hzI9wpJoo",
@@ -32,34 +27,12 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const googleProvider = new GoogleAuthProvider();
-
-const signInWithGoogle = async () => {
-  try {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
-    if (docs.docs.length === 0) {
-      await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        name: user.displayName,
-        authProvider: "google",
-        email: user.email,
-      });
-    }
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-};
-
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toast.error(err.message);
   }
 };
 
@@ -75,28 +48,28 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     });
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toast.error(err.message);
   }
 };
 
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
+    toast.success("Password reset link sent!");
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toast.error(err.message);
   }
 };
 
 const logout = () => {
   signOut(auth);
+  toast.success("you signed off")
 };
 
 export {
   auth,
   db,
-  signInWithGoogle,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordReset,

@@ -74,6 +74,34 @@
 .form span {
   color: #4b6cb7;
 }
+.dashboard-title{
+  background-color: var(--primary-color);
+  color: var(--mainBlack);
+  padding: 5px;
+}
+.fa-user{
+  font-size: 4rem;
+}
+.card{
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 12px;
+  margin: 70px auto;
+  text-align: center;
+  width: fit-content;
+  height: 250px;
+  font-size: larger;
+  font-family: 'Courier New', Courier, monospace;
+}
+.btn{
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px;
+  font-weight:3rem;
+  cursor: pointer;
+  margin-top: 2rem;
+}
 @media screen and (max-width: 450px) {
   .width-md {
     width: 100%;

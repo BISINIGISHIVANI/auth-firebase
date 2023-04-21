@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
+import { auth, logInWithEmailAndPassword } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { loginImg } from "../assets";
 import "./login.css"
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +13,6 @@ const Login = () => {
   const [passwordType, setPasswordType] = useState("password");
   useEffect(() => {
     if (loading) {
-      // maybe trigger a loading screen
       return;
     }
     if (user) navigate("/mydashboard");
@@ -60,10 +60,7 @@ const Login = () => {
               </div>
               <button className="border-none primary-btn" onClick={() => logInWithEmailAndPassword(email, password)}>
                 login 
-                {/* {isLoading ? <i className="fa fa-spinner"></i> : ""} */}
-              </button>
-              <button className="secondary-btn" onClick={signInWithGoogle}>
-                login with google
+                {loading ? <i className="fa fa-spinner"></i> : ""}
               </button>
             </div>
             <p className="padding-sm decoration-none margin-sm">
