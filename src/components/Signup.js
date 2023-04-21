@@ -33,7 +33,7 @@ const Signup = () => {
         </Link>
       <div className="login">
         <div className="form decoration-none">
-          <form className="login-form">
+          <div className="login-form">
             <span>
               <i className="fa fa-lock fa-3x"></i>
             </span>
@@ -88,7 +88,7 @@ const Signup = () => {
                 <span className="cursor-pointer">Login</span>
               </Link>
             </p>
-          </form>
+          </div>
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ const Login = () => {
         </Link>
       <div className="login">
         <div className="form decoration-none">
-          <form className="login-form">
+          <div className="login-form">
             <span>
               <i className="fa fa-lock fa-3x"></i>
             </span>
@@ -80,7 +80,7 @@ const Login = () => {
                 <span className="cursor-pointer">Forgot Password</span>
               </Link>
             </p>
-          </form>
+          </div>
         </div>
       </div>
     </div>
